@@ -4,7 +4,7 @@ import com.example.order.domain.Orders;
 
 public interface OrdersService {
 
-    void saveOrder(Orders orders) ;
+    double saveOrder(Orders orders) ;
 
     void deleteAllWhereValidityOrdersFalse();
 

@@ -14,8 +14,8 @@ public class OrdersController {
     private OrdersService ordersService;
 
 
-    @PostMapping("/saveOrders")
-    public void saveAccount(@RequestBody Orders orders) {
-         ordersService.saveOrder(orders);
+    @PostMapping("/saveOrder")
+    public String saveAccount(@RequestBody Orders orders) {
+        return "Total price order "+ordersService.saveOrder(orders);
     }
 }

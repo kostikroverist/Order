@@ -14,7 +14,7 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-    @GetMapping("/getAll/{name}")
+    @GetMapping("/findAllByName/{name}")
     public List<Items> findAllItems(@PathVariable("name") String name){
         return  itemService.findByName(name);
     }

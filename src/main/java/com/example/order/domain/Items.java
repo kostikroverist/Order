@@ -19,14 +19,15 @@ public class Items {
 
     @Column
     private double price;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Orders> orders;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "orders_id")
+    private Orders orders;
 
     public Items() {
     }
 
-    public Items(String name, int quantity, double price, List<Orders> orders) {
+    public Items(String name, int quantity, double price, Orders orders) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
@@ -49,11 +50,11 @@ public class Items {
         this.name = name;
     }
 
-    public List<Orders> getOrders() {
+    public Orders getOrders() {
         return orders;
     }
 
-    public void setOrders(List<Orders> orders) {
+    public void setOrders(Orders orders) {
         this.orders = orders;
     }
 
@@ -73,11 +74,5 @@ public class Items {
         this.price = price;
     }
 
-    public List<Orders> getOrder() {
-        return orders;
-    }
 
-    public void setOrder(List<Orders> orders) {
-        this.orders = orders;
-    }
 }

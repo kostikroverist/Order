@@ -20,13 +20,14 @@ public class Orders {
     private double totalPrice;
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {ALL})
+    @OneToMany(fetch = FetchType.EAGER, cascade = {ALL}, mappedBy = "orders")
+    @Column(nullable = false)
     private List<Items> items;
     @JsonIgnore
+    @Column(nullable = false)
     private Date created;
-
-
     @JsonIgnore
+    @Column(nullable = false)
     private boolean validityOrders = true;
 
 

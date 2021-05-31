@@ -20,16 +20,17 @@ public class OrdersServiceImpl extends Thread implements OrdersService {
 
     @Override
 
-    public void saveOrder(Orders orders) {
+    public double saveOrder(Orders orders) {
         List<Items> itemsList = orders.getItems();
 
         for (Items items : itemsList) {
-            items.setOrders(Collections.singletonList(orders));
+            items.setOrders(orders);
         }
         double reduce = itemsList.stream().mapToDouble(ob -> (ob.getPrice() * ob.getQuantity())).reduce(0, Double::sum);
 
         orders.setTotalPrice(reduce);
         orderRepository.save(orders);
+        return  reduce;
     }
 
     @Override
